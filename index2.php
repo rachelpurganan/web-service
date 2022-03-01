@@ -1,11 +1,11 @@
 <html>
 <head>
-<title>Korean Drama Web Service Demo</title>
+<title>Bond Web Service Demo</title>
 <style>
   
     body {font-family:georgia;}
   
-    .drama{
+    .film{
       border:1px solid #E77DC2;
       border-radius: 5px;
       padding: 5px;
@@ -13,12 +13,10 @@
       position:relative;   
     }
    
-    div.pic img{
+    .pic{
       position:absolute;
       right:10px;
       top:10px;
-      max-width: 75px;
-      height: auto;
     }
 
 </style>
@@ -26,19 +24,28 @@
 
 <script type="text/javascript">
 
-function kdramaTemplate(drama) {
-  return `<div class="drama">
-        <b>Title: </b> ${drama.Title}<br />
-        <b>Year: </b> ${drama.Year}<br />
-        <b>Cast: </b> ${drama.Cast}<br />
-        <b>Director: </b> ${drama.Director}<br />
-        <b>Status: </b> ${drama.Status}<br />
-        <b>Episodes: </b> ${drama.Episodes}<br />
+function bondTemplate(film) {
+  return `<div class="film">
+        <b>Film: </b> ${film.Film}<br />
+        <b>Title: </b> ${film.Title}<br />
+        <b>Year: </b> ${film.Year}<br />
+        <b>Director: </b> ${film.Director}<br />
+        <b>Producers: </b> ${film.Producers}<br />
+        <b>Writers: </b> ${film.Writers}<br />
+        <b>Composer: </b> ${film.Composer}<br />
+        <b>Bond: </b> ${film.Bond}<br />
+        <b>Budget: </b> ${film.Budget}<br />
+        <b>BoxOffice: </b> ${film.BoxOffice}<br />
         <div class="pic">
-          <img src="thumbnails/${drama.Image}" />
+          <img src="thumbnails/${film.Image}" />
         </div>
     </div>`;
 }
+
+
+
+
+
 
   
 $(document).ready(function() {  
@@ -55,16 +62,16 @@ $(document).ready(function() {
     request.done(function( data ) {
       console.log(data);
       //place the title on the page
-      $("#dramatitle").html(data.title);
+      $("#filmtitle").html(data.title);
 
-      //clears the previous dramas 
-      $("#dramas").html("");
+      //clears the previous films 
+      $("#films").html("");
 
-      //loops through dramas and adds to page
-      $.each(data.dramas, function(key, value){ //data.dramas is the array
-      let str = kdramaTemplate(value);
+      //loops through films and adds to page
+      $.each(data.films, function(key, value){ //data.films is the array
+      let str = bondTemplate(value);
 
-      $("<div></div>").html(str).appendTo("#dramas");
+      $("<div></div>").html(str).appendTo("#films");
         
       });
 
@@ -86,16 +93,16 @@ $(document).ready(function() {
 </script>
 </head>
 	<body>
-	<h1>Korean Drama Web Service</h1>
-		<a href="year" class="category">Korean Dramas By Year</a><br />
-		<a href="box" class="category">Korean Dramas By International Box Office Totals</a>
-		<h3 id="dramatitle">Title Will Go Here</h3>
-		<div id="dramas">
-			<p>Dramas will go here</p>
+	<h1>Bond Web Service</h1>
+		<a href="year" class="category">Bond Films By Year</a><br />
+		<a href="box" class="category">Bond Films By International Box Office Totals</a>
+		<h3 id="filmtitle">Title Will Go Here</h3>
+		<div id="films">
+			<p>Films will go here</p>
 		</div>
     <!--
-      <div class="drama">
-        <b>Drama: </b> 1<br />
+      <div class="film">
+        <b>Film: </b> 1<br />
         <b>Title: </b> Dr. YES<br />
         <b>Year: </b> 1962<br />
         <b>Director: </b> Terence Young<br />
