@@ -6,7 +6,7 @@
     body {font-family:georgia;}
   
     .drama{
-      border:1px solid #E77DC2;
+      border:1px solid #528AAE;
       border-radius: 5px;
       padding: 5px;
       margin-bottom:5px;
@@ -59,6 +59,7 @@ $(document).ready(function() {
 
       //clears the previous dramas 
       $("#dramas").html("");
+      $("#output").html("");
 
       //loops through dramas and adds to page
       $.each(data.dramas, function(key, value){ //data.dramas is the array
@@ -87,15 +88,17 @@ $(document).ready(function() {
 </head>
 	<body>
 	<h1>Korean Drama Web Service</h1>
-		<a href="year" class="category">Korean Dramas By Year</a><br />
-		<a href="box" class="category">Korean Dramas By International Box Office Totals</a>
+    <p>This page uses php, JavaScript and jQuery to build and document a JSON-based web service. This site holds up to 12 different korean dramas and their corresponding information such as: title, year, cast, director, status, number of episodes, and a picture. The user is able to click between "Korean Dramas by Year" or "Korean Dramas by Title" in order to categorize how they would like to view this list.</p>
+    <p>Please feel free to browse around! This list contains a few of the classics, as well as some of my favorites that I love to re-watch whenever I have the time.</p>
+		<a href="year" class="category">Korean Dramas by Year</a><br />
+		<a href="box" class="category">Korean Dramas by Title</a>
 		<h3 id="dramatitle">Title Will Go Here</h3>
 		<div id="dramas">
 			<p>Dramas will go here</p>
 		</div>
     <!--
       <div class="drama">
-        <b>Drama: </b> 1<br />
+        <b>Film: </b> 1<br />
         <b>Title: </b> Dr. YES<br />
         <b>Year: </b> 1962<br />
         <b>Director: </b> Terence Young<br />
